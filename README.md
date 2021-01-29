@@ -3,7 +3,9 @@ This repository is for the final project of the course 'Applied Plotting, Charti
 
 The project title is 'Becoming an Independent Data Scinetist'.
 
-My research question is that 'How have the win ratio for the Canadian ice hockey teams in NHL North division (i.e. Vancouver Canucks, Toronto Maple Leafs, Montreal Canadiens, Winnipeg Jets, Edmonton Oilers, Calgary Flames, and Ottawa Senetors) change over the last ten years?' Since I currently live in Vancouver, I'm interested in Vancouver Canucks, especially. 
+My research question is that 'How have the win ratio of Vancouver Canucks in NHL North Division, compared with other Canadian ice hockey teams in NHL North division (i.e. Toronto Maple Leafs, Montreal Canadiens, Winnipeg Jets, Edmonton Oilers, Calgary Flames, and Ottawa Senetors) change over the last ten years?' Since the author currently lives in Vancouver, he is interested in Vancouver Canucks, especially.\
+
+---
 
 This repository has all the data that I used in the analysis. The data sets are downloaded from [hockyDB.com](https://www.hockeydb.com/). 
 The following links lead to the direct data source for each team;\
@@ -15,5 +17,16 @@ The following links lead to the direct data source for each team;\
 [Edmonton Oilers](https://www.hockeydb.com/stte/edmonton-oilers-5632.html)\
 [Calgary Flames](https://www.hockeydb.com/stte/calgary-flames-5090.html)\
 [Ottawa Senetors](https://www.hockeydb.com/stte/ottawa-senators-7328.html)\
+
+This visualization was concerned with answering the question of how the win ratio for 
+
+
+Also, I incorporate and defend the principles discussed in the first week of the course, specifically, Cairo’s principles of truth, beauty, function, and insight.
+These are the responses that link each principle to one or more elements of my visual. 
+
+**Truthfulness**: I set ticks in y-axis with equal interval so that I could avoid misleading.\
+**Beauty**: I highlight the line for 'Vancouver Canucks' that is the team I'm interested in.\
+**Functionality**: I chose the line plotting style so that it can show the historical changes of win ration over time.\
+**Insightfulness**: I put the reference line that represents the win ratio of 0.5. Above this line, the win ratio is higher than the lose ratio at the specific year. \
 
 
