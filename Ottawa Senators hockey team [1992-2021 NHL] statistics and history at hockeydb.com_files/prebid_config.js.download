@@ -1,0 +1,398 @@
+if(typeof googletag === 'undefined'){
+  var googletag = googletag || {cmd: []};
+}
+googletag.cmd.push(function(){
+  googletag.pubads().setRequestNonPersonalizedAds(0);
+  googletag.pubads().setForceSafeFrame(false);
+});
+
+function gettfPassback(name) {
+  var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+  return v ? v[2] : null;
+}
+var tfStatus = 'false';
+if (gettfPassback('tfPassback') !== null && gettfPassback('tfPassback') !== '') {
+  tfStatus = 'true';
+}
+function getMediaLayout() {
+  const regEx = /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile/i;
+  const width = window.innerWidth;
+  if (width < 768) {
+    return "mobile";
+  } else if (width < 993) {
+    return "tablet";
+  } else {
+    let devc = navigator.userAgent.match(regEx);
+    if (devc == null) {
+      return "desktop";
+    } else {
+      return "mobile";
+    }
+  }
+}
+function getUrlParameter(name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+  var results = regex.exec(location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+var ivrSelector = Math.floor(Math.random() * 15 + 1) * 1000 + 15000;
+var bidPageUrl = window.location.href.replace(/\/$/, "");
+var ibvSelector = (Math.floor(Math.random() * 4 + 1) == 1) ? true : false;
+var DIDNA_CONFIG = {
+  'manualMode': false,
+  'enableRulesEngine': false,
+  'logging': false,
+  'activeTab': true,
+  'debug': false,
+  'prebidConfig': {
+    'options': {
+      'publisherDomain': 'https://www.hockeydb.com',
+      'pageUrl': bidPageUrl,
+      'bidderTimeout': 2000,
+      'priceGranularity': 'high',
+      'userSync': {
+        'userIds': [{
+          'name': 'criteo',
+          'storage': {
+            'type': "cookie",
+            'name': "_critid",
+            'expires': -1
+          }
+        },{
+          'name': 'pubCommonId',
+          'storage': {
+            'type': "cookie",
+            'name': "_pubcid",
+            'expires': 365
+          }
+        },{
+            'name': 'sharedId',
+            'params': {
+                      'syncTime': 60 // in seconds, default is 24 hours
+             },
+            'storage': {
+                'name': 'sharedid',
+                'type': 'cookie',
+                'expires': 28
+            },
+        }]
+      }
+    }
+  },
+  'lazyload': 1,
+  'lazyloadConfig': {
+    'desktop': {
+      'rootMargin': '40% 0px'
+    },
+    'mobile': {
+      'rootMargin': '40% 0px'
+    }
+  },
+  'ibv': true,
+  'ibvConfig': {
+    'options': {
+      'height': '100%',
+      'width': '100%'
+    },
+    //'ibvWaitCount': 2,
+    'url': 'https://pubads.g.doubleclick.net/gampad/ads?iu=/170737076/IBV/hockeydb_ibv&description_url=https%3A%2F%2F'+window.location.hostname+'&env=vp&impl=s&correlator=&tfcd=0&npa=0&gdfp_req=1&output=xml_vast4&sz=640x480&max_ad_duration=30000&unviewed_position_start=1'
+  },
+  'scanners': {
+    'confiant': {
+      'prebid': 1
+    },
+    'devcon': {
+      'page': 0
+    }
+  },
+  'setupConfig': {
+    'outOfViewRefresh': false
+  },
+  'factoryConfig': {
+    'all': {
+      'inViewRefresh': ivrSelector,
+      'targeting': {
+        'tfPassback': tfStatus
+      }
+    }
+  },
+  'priceFloors': {
+    //'mobile': 0.12,
+    //'desktop': 0.34
+  },
+  'rules': {
+    '5405480325': {'refresh': 0}
+  },
+  'adjustments': {
+    //'ix': 1.20,
+    //'appnexus': 1.20,
+    //'conversant': 1.20,
+    //'aol': 1.20,
+    //'districtm': 1.20,
+    //'districtmDMX': 1.20,
+    //'sovrn': 1.20,
+    //'rubicon': 1.20,
+    //'33across': 1.20,
+    //'openx': 1.20,
+    //'windtalker':1.20,
+    //'synacormedia': 1.20
+  },
+  'placements':{
+    'all': 
+    {
+      'sizeless': {
+        'amx': {'tagId': 'ZGlkbmEuaW8', 'adUnitId': 'hockeydb.com'},
+        'appnexus': {'placementId': 13828750, 'allowSmallerSizes': true, 'reserve': 0.05},
+        'districtm': {'placementId': 12785283, 'reserve': 0.05},
+        'districtmDMX': {'dmxid': 195874, 'memberid': 101114, 'floor': 0.05},
+        'openx': {'unit': 540256490, 'customFloor': 0.05},
+        'conversant': {'site_id': '114860', 'bidfloor': 0.05},
+        '33across': {'siteId': 'dIjY4sXcKr6BnPaKkGJozW', 'productId': 'siab'},
+        'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        'ix': {'siteId': 227229},
+        'trion': { 'pubId': '30253', 'sectionId':'10351'}
+      },
+      '468x60': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        'sovrn': {'tagid': 645992, 'bidfloor': 0.05},
+        'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d6b9bc00f9'}
+      },
+      '728x90': {
+        'aol': {'placement': '5027127', 'network': '11609.1'},
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        'sovrn': {'tagid': 528154, 'bidfloor': 0.05},
+        //'windtalker': {'pubId': '206804', 'siteId': '206894', 'size': '728X90', 'placementId': 'hockeybuzz'},
+        'synacormedia': {'placementId': 83293, 'seatId': 'didna'},
+        'pubmatic': {'publisherId': '159745', 'adSlot': '3148617'},
+        'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d7077300fa'}
+      },
+      '970x90': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        //'sovrn': {'tagid': 645991, 'bidfloor': 0.05},
+        'pubmatic': {'publisherId': '159745', 'adSlot': '3148618'},
+        'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d45d4400f1'}
+      },
+      '970x250': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        //'sovrn': {'tagid': 645990, 'bidfloor': 0.05},
+        'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d4b8c500f2'}
+      },
+      '300x50': {
+        'rubicon': {'accountId': '20100', 'siteId': '269268', 'zoneId': '1337590', 'floor': 0.05}
+      },
+      '320x50': {
+        'aol': {'placement': '5027098', 'network': '11609.1'},
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        'sovrn': {'tagid': 654484, 'bidfloor': 0.05},
+        //'windtalker': {'pubId': '206804', 'siteId': '206894', 'size': '320X50', 'placementId': 'hockeybuzz'},
+        'synacormedia': {'placementId': 83312, 'seatId': 'didna'},
+        'pubmatic': {'publisherId': '159745', 'adSlot': '3148615'},
+        'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d642b700f7'}
+      },
+      '320x100': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d67b0f00f8'}
+      },
+      '200x200': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05}
+      },
+      '250x250': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05}
+      },
+      '300x250': {
+        'aol': {'placement': '5027097', 'network': '11609.1'},
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        'sovrn': {'tagid': 529907, 'bidfloor': 0.05},
+        //'windtalker': {'pubId': '206804', 'siteId': '206894', 'size': '300X250', 'placementId': 'hockeybuzz'},
+        'synacormedia': {'placementId': 83297, 'seatId': 'didna'},
+        'pubmatic': {'publisherId': '159745', 'adSlot': '3148613'},
+        'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d5067700f3'}
+      },
+      '336x280': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        'sovrn': {'tagid': 645993, 'bidfloor': 0.05},
+        'synacormedia': {'placementId': 83302, 'seatId': 'didna'},
+        'pubmatic': {'publisherId': '159745', 'adSlot': '3148616'},
+        'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d5637f00f4'}
+      },
+      '120x240': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05}
+      },
+      '120x600': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        //'sovrn': {'tagid': 645994, 'bidfloor': 0.05},
+        'sovrn': {'tagid': 645994, 'bidfloor': 0.05},
+        'pubmatic': {'publisherId': '159745', 'adSlot': '3148611'},
+        'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d6092b00f6'}
+      },
+      '160x600': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        'sovrn': {'tagid': 529899, 'bidfloor': 0.05},
+        'pubmatic': {'publisherId': '159745', 'adSlot': '3148612'},
+        'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d5ccaa00f5'}
+      },
+      '300x600': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05},
+        'sovrn': {'tagid': 580397, 'bidfloor': 0.05},
+        //'windtalker': {'pubId': '206804', 'siteId': '206894', 'size': '300X600', 'placementId': 'hockeybuzz'},
+        'synacormedia': {'placementId': 83306, 'seatId': 'didna'},
+        'pubmatic': {'publisherId': '159745', 'adSlot': '3148614'},
+        'onemobile': {'dcn': '8a9691d0017070401401403a11d30006', 'pos': '8a9698ab01747406698907d7444000fb'}
+      },
+      '300x1050': {
+        //'rubicon': {'accountId': '20100', 'siteId': '238574', 'zoneId': '1176744', 'floor': 0.05}
+      }
+    }
+  }
+};
+var stickySelector = Math.floor(Math.random() * 4 + 1) == 1 ? true : false;
+var pbjs = (window.pbjs || {que: []});
+var enableTest = getUrlParameter('didna');
+//if (enableTest == "sticky"){
+if (getMediaLayout() == 'mobile') {
+  if (stickySelector) {
+    setTimeout(function() {
+      var gptStickyAdSlots = [];
+      var stickyDiv = document.createElement('div');
+      stickyDiv.innerHTML = '<div class="adFooterDFPMobile" id="divSticky-01-Container" style="visibility: visible;"><div class="didna-adh-ad-close-tab"><img src="https://storage.googleapis.com/didna-files/logo-didna-sm.png" alt="didna" style="height:20px;" onclick="checkUsOut()"><div class="didna-adh-close-x" onclick="removeSticky()"></div></div><div id="divSticky-01" class="adFooterDFPMobileAd"></div></div>';
+      var stickyLocation = document.getElementsByTagName('body')[0];
+      var styleStickyContainer = ".adHeaderDFPMobile, .adFooterDFPMobile {left: 0 !important; position: fixed !important; text-align: center !important; bottom: 0 !important; width: 100% !important; z-index:11000001 !important; display: block!important; border: none; background-color: rgba(255,255,255,1.00) !important; border-top: 2px solid #dfdfdf !important;}.didna-adh-ad-close-tab {display: inline-flex !important; position: absolute; top: -26px !important; right: 10px !important; background: #dfdfdf; font: normal 12px/150% Arial, Helvetica, sans-serif !important; color: rgba(86,86,86,1.00) !important; text-decoration: none !important; padding: 3px 5px; -moz-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;}.didna-adh-ad-close-tab:hover   {color: rgba(0,0,0,1.00) !important; cursor: pointer !important;}.didna-adh-ad-close-tab:hover .didna-adh-close-x:before, .didna-adh-ad-close-tab:hover .didna-adh-close-x:after {background-color: rgba(0,0,0,1.00) !important;}.didna-adh-close-x {width: 16px !important; height: 16px !important; position: relative !important; margin: 2px 2px 0 2px !important;}.didna-adh-close-x:before, .didna-adh-close-x:after {position: absolute !important; left: 8px !important; content: ' '; height: 15px !important; width: 2px !important; background-color: rgba(86,86,86,1.00) !important;}.didna-adh-close-x:before { transform: rotate(45deg) !important;}.didna-adh-close-x:after { transform: rotate(-45deg) !important;}.didna-adh-ad-close-tab span {display: inline-flex !important; margin-right: 5px; padding-right: 5px; border-right: 1px solid #c2c2c2 !important; color: #0e76bc !important; }.didna-adh-ad-close-tab:hover span {color: #094b77 !important;}";
+      var styleStickyAd = '.adHeaderDFPMobileAd, .adFooterDFPMobileAd { display: inline-block; }';
+      function appendStyle(styles) {
+        var css = document.createElement('style');
+        css.type = 'text/css';
+        if (css.styleSheet) css.styleSheet.cssText = styles;
+        else css.appendChild(document.createTextNode(styles));
+        document.getElementsByTagName("head")[0].appendChild(css);
+      }
+      appendStyle(styleStickyContainer);
+      appendStyle(styleStickyAd);
+      stickyLocation.appendChild(stickyDiv);
+      if (getMediaLayout() == 'mobile'){
+        didna.cmd.push(function(){
+          var adUnitPath = '170737076/display/sticky/hockeydb';
+          var adUnitId = 'divSticky-01';
+          var adUnits = [{
+            adUnitPath: adUnitPath,
+            id: 'divSticky-01',
+            size: [[320,50]],
+            targeting: {'auid': 'divSticky-01'}
+          }];
+          googletag.pubads().setCentering(true);
+          googletag.pubads().setForceSafeFrame(false);
+          didna.createAdUnits(adUnits);
+        });
+      }
+    }, 500);
+    setTimeout(function(){
+      try {
+        setTimeout(function(){
+          pbjs.que.push(function(){
+            var au = pbjs.adUnits.filter(function(adUnit){
+              if(adUnit.code == "divSticky-01"){
+                return adUnit;
+              }
+            });
+            if(au.length !== 0){
+              au[0].bids.push({'bidder': 'trion', params: {'pubId':'30253', 'sectionId':'10351'}});
+            }
+          });
+        }, 1000);
+      }
+      catch(err) {
+      }
+    }, 1000);
+  } else {
+    var infolinks_pid = 3286770;
+    var infolinks_wsid = 1;
+    (function() {
+      let duEL = document.createElement("script");
+      duEL.type = "text/javascript";
+      duEL.async = true;
+      duEL.src = "//resources.infolinks.com/js/infolinks_main.js";
+      let duTargetEl = document.getElementsByTagName("head")[0];
+      duTargetEl.appendChild(duEL);
+    })();
+  }
+  function checkUsOut() {
+    window.open('http://didna.io/?utm_source=didna&utm_medium=logo&utm_campaign=sticky', '_blank');
+  }
+  function removeSticky() {
+    didna.cmd.push(function(){
+      didna.removeAdUnits('divSticky-01');
+    });
+    var elem = document.getElementById("divSticky-01-Container");
+    elem.parentNode.removeChild(elem);
+    function setCookie(name, value, minutes) {
+      var d = new Date();
+      d.setTime(d.getTime() + (30 * 60 * 1000));
+      //document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
+    }
+    //setCookie('stickyClosed','true',30);
+  }
+}
+(function(){
+  let duEL = document.createElement("script");
+  duEL.type = "text/javascript";
+  duEL.async = true;
+  //duEL.src = 'https://storage.googleapis.com/didna-files/utility/didna_util_v3122.min.js.gz';
+  duEL.src = "https://storage.googleapis.com/didna-files/utility/didna_util_v3142.min.js.gz";
+  let duTargetEl = document.getElementsByTagName("head")[0];
+  duTargetEl.appendChild(duEL);
+})();
+(function(){
+  let duEL = document.createElement("script");
+  duEL.type = "text/javascript";
+  duEL.async = true;
+  duEL.src = "https://js-sec.indexww.com/ht/p/186905-129106728116453.js";
+  let duTargetEl = document.getElementsByTagName("head")[0];
+  duTargetEl.appendChild(duEL);
+})();
+
+//signal start
+function mergeConfig(e,n){for(var o in n)"object"==typeof n[o]?e[o]=o in e?mergeConfig(e[o],n[o]):n[o]:e[o]=n[o];return e}
+
+var INT_DIDNA_CONFIG;
+if (getMediaLayout() == 'mobile') {
+  	console.log("signal");
+    INT_DIDNA_CONFIG = {
+    'factoryConfig': {
+      'all': {
+        'inViewRefresh': 1000000
+        }
+      }
+    };
+  (function() {
+    var duEL = document.createElement("script");
+    duEL.type = "text/javascript";
+    duEL.async = true;
+    duEL.defer = true;
+    duEL.src = "https://get.s-onetag.com/9436e75b-948c-4c55-8194-57517302071f/tag.min.js";
+    var duTargetEl = document.getElementsByTagName("head")[0];
+    duTargetEl.appendChild(duEL);
+  })();
+}
+
+if(window.DIDNA_CONFIG)window.DIDNA_CONFIG=mergeConfig(window.DIDNA_CONFIG,INT_DIDNA_CONFIG);else var DIDNA_CONFIG=INT_DIDNA_CONFIG;
+//signal end
+
+try {
+    if (localStorage.getItem('diDNA_location') == null){
+        setTimeout(function(){
+            try {
+                diDNA_Storage = window.localStorage;
+                fetch('https://pro.ip-api.com/json/?key=yizCuNYTw9kOXdk&fields=countryCode,region,city,zip')
+                .then( res => res.json())
+                .then(response => {
+                    //console.log("Response: ", response);
+                    localStorage.setItem('diDNA_location', JSON.stringify(response));
+                 })
+                 .catch((data, status) => {
+                    //console.log('Request failed');
+             })
+            } catch (error) {}
+        }, 2000);
+    } else {}
+} catch (error) {}
