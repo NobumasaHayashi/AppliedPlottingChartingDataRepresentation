@@ -23,7 +23,7 @@ The following links lead to the direct data source for each team;\
 ---
 ## Discussion
    This visualization was concerned with answering the question of how the win ratio of Vancouver Canucks in NHL North Division, compared with other Canadian ice hockey teams in NHL North division change over the last ten years. The website 'hockeyDB.com' archives the data concerning winds and loses by season for each team. In this analysis, I especially picked up the results for Canadian teams in the last ten years and caluclated the win ratio for each season from them. 
-   The plot indicates that Canucks represents the highest ratios during 2010-2011. However, it gracually decreases during between 2012 and 2016 and it finally arrived at the lowest among the division in 2016 season. After that the win ratio starts increasing again. So, Canucks are gradually becoming in a good mood in the last three years.
+   The plot indicates that Canucks represents the highest ratios during 2010-2011. However, it gradually decreases during between 2012 and 2016 and it finally arrived at the lowest among the division in 2016 season. After that the win ratio starts increasing again. So, Canucks are gradually becoming in a good mood in the last three years.
 
 ---
 ## Cairo's Principle
