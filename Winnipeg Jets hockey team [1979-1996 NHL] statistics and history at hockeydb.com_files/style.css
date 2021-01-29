@@ -1,0 +1,68 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}
+
+/* General Styles */
+
+#Container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 728px;
+    height: 90px;
+    display: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    cursor: pointer !important;
+    background-color: #f3eade;
+}
+
+#Container > a > * {
+    position: absolute;
+}
+
+.preload {
+    display: none;
+}
+
+/* Custom Styles */
+
+#BG1,
+#BG2,
+#copy1_1,
+#copy1_2,
+#copy2,
+#logoQB,
+#CTA {
+    top: -1px;
+    left: -1px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 728px;
+    height: 90px;
+}
+
+#copy1_1 {background-image: url('copy1_1.png');}
+#copy1_2 {background-image: url('copy1_2.png');}
+#copy2 {background-image: url('copy2.png');}
+#logoQB {background-image: url('logoQB.png');}
+#CTA {
+    background-image: url('CTA.png');
+    transform-origin: 659px 66px;
+}
