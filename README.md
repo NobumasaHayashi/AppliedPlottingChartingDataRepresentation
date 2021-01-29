@@ -4,7 +4,7 @@ This repository is for the final project of the course 'Applied Plotting, Charti
 The project title is 'Becoming an Independent Data Scinetist'.
 
 ## Research question
-My research question is that 'How have the win ratio of Vancouver Canucks in NHL North Division, compared with other Canadian ice hockey teams in NHL North division (i.e. Toronto Maple Leafs, Montreal Canadiens, Winnipeg Jets, Edmonton Oilers, Calgary Flames, and Ottawa Senetors) change over the last ten years?' Since the author currently lives in Vancouver, he is interested in Vancouver Canucks, especially.
+My research question is that 'How have the win ratio of Vancouver Canucks in NHL North Division, compared with other Canadian ice hockey teams in NHL North division (i.e. Toronto Maple Leafs, Montreal Canadiens, Winnipeg Jets, Edmonton Oilers, Calgary Flames, and Ottawa Senetors) change over the last ten years?' Since the author currently lives in Vancouver, he is interested in Vancouver Canucks, especially. The North Division itself is formed due to COVID-19 restrictions since 2020, but the win ratio is a good measure to evaluate the competency of each team.
 
 ---
 ## Data Source
@@ -21,10 +21,14 @@ The following links lead to the direct data source for each team;\
 [Ottawa Senetors](https://www.hockeydb.com/stte/ottawa-senators-7328.html)
 
 ---
+## Discussion
+   This visualization was concerned with answering the question of how the win ratio of Vancouver Canucks in NHL North Division, compared with other Canadian ice hockey teams in NHL North division change over the last ten years. The website 'hockeyDB.com' archives the data concerning winds and loses by season for each team. In this analysis, I especially picked up the results for Canadian teams in the last ten years and caluclated the win ratio for each season from them. 
+   The plot indicates that Canucks represents the highest ratios during 2010-2011. However, it gracually decreases during between 2012 and 2016 and it finally arrived at the lowest among the division in 2016 season. After that the win ratio starts increasing again and Canucks get close to 
 
-This visualization was concerned with answering the question of how the win ratio for 
 
 
+---
+## Cairo's Principle
 Also, I incorporate and defend the principles discussed in the first week of the course, specifically, Cairo’s principles of truth, beauty, function, and insight.
 These are the responses that link each principle to one or more elements of my visual. 
 
